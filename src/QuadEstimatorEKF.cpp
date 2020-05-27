@@ -110,6 +110,7 @@ void QuadEstimatorEKF::UpdateFromIMU(V3F accel, V3F gyro)
 
   float predictedPitch = q_t_bar.Pitch();
   float predictedRoll = q_t_bar.Roll();
+  // get the yaw angle from quaternion
   ekfState(6) = q_t_bar.Yaw();
 
   // normalize yaw to -pi .. pi
