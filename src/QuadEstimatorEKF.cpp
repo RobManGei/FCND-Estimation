@@ -103,6 +103,7 @@ void QuadEstimatorEKF::UpdateFromIMU(V3F accel, V3F gyro)
   //if (ekfState(6) < -F_PI) ekfState(6) += 2.f*F_PI;
 	
   /////////////////////////// NEW CODE /////////////////////////
+  //get quaternion from euler angles
   Quaternion<float> q_t = q_t.FromEuler123_RPY(rollEst, pitchEst, ekfState(6));
   Quaternion<float> q_t_bar = q_t.IntegrateBodyRate(gyro, dtIMU);
 
