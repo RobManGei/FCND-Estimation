@@ -108,6 +108,7 @@ void QuadEstimatorEKF::UpdateFromIMU(V3F accel, V3F gyro)
   //integrate the body rates into quaternion
   Quaternion<float> q_t_bar = q_t.IntegrateBodyRate(gyro, dtIMU);
 
+  //get the Pitch angle from quaternion
   float predictedPitch = q_t_bar.Pitch();
   float predictedRoll = q_t_bar.Roll();
   ekfState(6) = q_t_bar.Yaw();
