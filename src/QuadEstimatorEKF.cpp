@@ -105,6 +105,7 @@ void QuadEstimatorEKF::UpdateFromIMU(V3F accel, V3F gyro)
   /////////////////////////// NEW CODE /////////////////////////
   //get quaternion from euler angles
   Quaternion<float> q_t = q_t.FromEuler123_RPY(rollEst, pitchEst, ekfState(6));
+  //integrate the body rates into quaternion
   Quaternion<float> q_t_bar = q_t.IntegrateBodyRate(gyro, dtIMU);
 
   float predictedPitch = q_t_bar.Pitch();
